@@ -1,15 +1,8 @@
-/*
- * File: 0-holberton.c
- * Auth: Brennan D Baraban
- *
- */
-
 #include "holberton.h"
-
 /**
- * main - Prints "Holberton" followed by a new line.
+ * main - Read charcters and prints using _char
  *
- * Return: Always 0.
+ * Return: Always 0 (Success)
  */
 int main(void)
 {

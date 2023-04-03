@@ -1,56 +1,50 @@
-/*
- * File: 104-fibonacci.c
- * Auth: Brennan D Baraban
- */
-
 #include <stdio.h>
-
 /**
- * main - Prints the first 98 Fibonacci numbers, starting with
- *        1 and 2, separated by a comma followed by a space.
+ * main - the 98 first fibonaccis
  *
- * Return: Always 0.
+ * numbers fibo = fiboB|fiboA f1 = f1b|f1a f2 = f2b|f2a
+ * Return: 0 success
  */
 int main(void)
 {
-	int count;
-	unsigned long fib1 = 0, fib2 = 1, sum;
-	unsigned long fib1_half1, fib1_half2, fib2_half1, fib2_half2;
-	unsigned long half1, half2;
+	long int fiboA, fiboB, f1, f2, n, f1a, f1b, f2a, f2b, carry;
 
-	for (count = 0; count < 92; count++)
+	f1 = 2;
+	f1a = f1 % 1000000000;
+	f1b = f1 / 1000000000;
+	f2 = 1;
+	f2a = f2 % 1000000000;
+	f2b = f2 / 1000000000;
+	printf("%ld, %ld, ", f2, f1);
+	for (n = 3; n <= 98; n++)
 	{
-		sum = fib1 + fib2;
-		printf("%lu, ", sum);
-
-		fib1 = fib2;
-		fib2 = sum;
-	}
-
-	fib1_half1 = fib1 / 10000000000;
-	fib2_half1 = fib2 / 10000000000;
-	fib1_half2 = fib1 % 10000000000;
-	fib2_half2 = fib2 % 10000000000;
-
-	for (count = 93; count < 99; count++)
-	{
-		half1 = fib1_half1 + fib2_half1;
-		half2 = fib1_half2 + fib2_half2;
-		if (fib1_half2 + fib2_half2 > 9999999999)
+		fiboA = (f1a + f2a) % 1000000000;
+		carry = (f1a + f2a) / 1000000000;
+		fiboB = f1b + f2b + carry;
+		f2a = f1a;
+		f2b = f1b;
+		f1a = fiboA;
+		f1b = fiboB;
+		if (n > 58)
 		{
-			half1 += 1;
-			half2 %= 10000000000;
+			if (n < 98)
+			{
+				printf("%ld%09ld, ", fiboB, fiboA);
+			}
+			else
+			{
+				printf("%ld%09ld\n", fiboB, fiboA);
+			}
 		}
-
-		printf("%lu%lu", half1, half2);
-		if (count != 98)
-			printf(", ");
-
-		fib1_half1 = fib2_half1;
-		fib1_half2 = fib2_half2;
-		fib2_half1 = half1;
-		fib2_half2 = half2;
+		else
+		{
+			if (fiboB == 0)
+			{
+				printf("%ld, ", fiboA);	}
+			else
+			{
+			printf("%ld%ld, ", fiboB, fiboA); }
+		}
 	}
-	printf("\n");
 	return (0);
 }

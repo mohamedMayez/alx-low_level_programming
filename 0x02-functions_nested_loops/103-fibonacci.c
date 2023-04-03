@@ -1,34 +1,30 @@
-/*
- * File: 103-fibonacci.c
- * Auth: Brennan D Baraban
- */
-
 #include <stdio.h>
-
 /**
- * main - Prints the sum of even-valued Fibonacci sequence
- *        terms not exceeding 4000000.
+ * main - print the sum of the odd number of the serie
  *
- * Return: Always 0.
+ *
+ * Return: the sum
  */
 int main(void)
 {
-	unsigned long fib1 = 0, fib2 = 1, fibsum;
-	float tot_sum;
+	int i;
+	long fibo = 0;
+	long fn_1 = 1;
+	long fn_2 = 0;
+	long sum_odd = 0;
 
-	while (1)
+	for (i = 1; i <= 32; i++)
 	{
-		fibsum = fib1 + fib2;
-		if (fibsum > 4000000)
-			break;
+		fibo = fn_1 + fn_2;
+		fn_2 = fn_1;
+		fn_1 = fibo;
 
-		if ((fibsum % 2) == 0)
-			tot_sum += fibsum;
-
-		fib1 = fib2;
-		fib2 = fibsum;
+		if ((fibo % 2) == 0)
+		{
+			sum_odd = sum_odd + fibo;
+		}
 	}
-	printf("%.0f\n", tot_sum);
 
+	printf("%ld\n", sum_odd);
 	return (0);
 }
