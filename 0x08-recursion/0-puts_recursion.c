@@ -1,4 +1,4 @@
-#include<main.h>
+#include "main.h"
 /**
 * function - this function use putchar to print a string
 * we get the pointer string
